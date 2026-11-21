@@ -21,7 +21,7 @@
 
 - **Кольори:** `canvas` (фон сторінки), `surface` (картки й поля), `line` (декоративні лінії, рамки карток), `accent` (декор: лінії, зірочки, стрілки; не для тексту), `accent-ink` (золотий текст), `ink` (основний текст, темні кнопки), `ink-muted` (приглушений текст, межа поля й кнопки без заливки), `danger` (текст і межа поля з помилкою), `sage` (смуга послуг, підкладка портрета; текст на ній лише `canvas` або `surface`).
 - **Шрифти:** `font-serif` (Cormorant Garamond, основний, з кирилицею), `font-script` (Allura, лише латиниця). Підключення в `src/app/fonts.ts`.
-- **Текст:** `text-caption`, `text-body`, `text-heading`, `text-lead`, `text-script`, `text-display`. Висота рядка, трекінг і жирність задані разом із розміром.
+- **Текст:** `text-caption`, `text-body`, `text-heading`, `text-lead`, `text-script`, `text-display`; для вузького екрана `text-script-sm` і `text-display-sm` (вмикай звичайний розмір з `md:`). Висота рядка, трекінг і жирність задані разом із розміром.
 - **Радіуси:** `rounded-control` і `rounded-card` (прямі кути), `rounded-t-arch` (арка над портретом).
 - **Пропорції:** `aspect-cover` (обкладинка роботи), `aspect-portrait` (портрет).
 - **Відступи:** 2, 3, 4, 6, 8 у класах (8–32 px) і `section` між великими секціями.

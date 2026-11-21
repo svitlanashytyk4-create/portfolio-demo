@@ -31,6 +31,7 @@ Cormorant Garamond (`font-serif`), основний, з кирилицею.
     "var(--text-body)",
     "var(--text-heading)",
     "var(--text-lead)",
+    "var(--text-display-sm)",
     "var(--text-display)",
   ]}
   sampleText="Дизайн, який має сенс. Design that makes sense."
@@ -38,7 +39,7 @@ Cormorant Garamond (`font-serif`), основний, з кирилицею.
 
 Allura (`font-script`), рукописний, лише латиниця.
 
-<Typeset fontFamily="var(--font-script)" fontSizes={["var(--text-script)"]} sampleText="Hello, I'm Svitlana" />
+<Typeset fontFamily="var(--font-script)" fontSizes={["var(--text-script-sm)", "var(--text-script)"]} sampleText="Hello, I'm Svitlana" />
 
 ## Стилі тексту
 
@@ -48,7 +49,9 @@ Allura (`font-script`), рукописний, лише латиниця.
     <p className="text-body">text-body · текст кнопок, описи</p>
     <p className="text-heading">text-heading · назви в картках</p>
     <p className="text-lead">text-lead · лід-абзац, рядок ролі</p>
+    <p className="font-script text-script-sm text-accent-ink">Hello, I'm Svitlana · text-script-sm</p>
     <p className="font-script text-script text-accent-ink">Hello, I'm Svitlana</p>
+    <p className="text-display-sm">text-display-sm</p>
     <p className="text-display">text-display</p>
     <p className="text-body text-ink-muted">text-ink-muted · приглушений текст</p>
     <p className="text-body text-danger">text-danger · текст помилки</p>

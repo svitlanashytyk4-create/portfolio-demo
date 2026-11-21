@@ -32,13 +32,13 @@ export default function Home() {
         {/* ---------- Hero ---------- */}
         <section className="mt-section grid items-end gap-8 md:grid-cols-5">
           <div className="flex flex-col self-start md:col-span-3">
-            <p className="font-script text-script text-accent-ink">Hello, I&apos;m Svitlana</p>
+            <p className="font-script text-script-sm text-accent-ink md:text-script">Hello, I&apos;m Svitlana</p>
             <div className="flex items-center gap-2">
               <Rule width={81} strokeWidth={2} />
               <Star />
               <span className="ml-4 text-lead">UI/UX Designer</span>
             </div>
-            <h1 className="mt-4 text-display uppercase">
+            <h1 className="mt-4 text-display-sm uppercase md:text-display">
               <span className="block">Design</span>
               <span className="block">that</span>
               <span className="block">makes sense.</span>

@@ -50,6 +50,16 @@
   --text-script--letter-spacing: 0;
   --text-script--font-weight: 400;
 
+  --text-script-sm: 44px; /* рукописне привітання на вузькому екрані */
+  --text-script-sm--line-height: 1.2;
+  --text-script-sm--letter-spacing: 0;
+  --text-script-sm--font-weight: 400;
+
+  --text-display-sm: 46px; /* головний заголовок на вузькому екрані */
+  --text-display-sm--line-height: 1.2;
+  --text-display-sm--letter-spacing: 0;
+  --text-display-sm--font-weight: 600;
+
   --text-display: 72px; /* головний заголовок */
   --text-display--line-height: 1.2;
   --text-display--letter-spacing: 0;

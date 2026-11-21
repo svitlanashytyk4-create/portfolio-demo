@@ -22,7 +22,7 @@ Storybook показує токени й компоненти дизайн-си�
 - Межа поля форми й кнопки без заливки: `ink-muted` (контраст не менше 3:1), не `line`.
 - Шрифти: `font-serif` (Cormorant Garamond, з кирилицею), `font-script` (Allura, лише латиниця). Підключення в `src/app/fonts.ts`.
 - Радіуси: `rounded-control` (кнопки, поля), `rounded-card` (картки), обидва прямі; `rounded-t-arch` (арка над портретом).
-- Розміри тексту: `text-caption`, `text-body`, `text-heading`, `text-lead`, `text-script`, `text-display`. Висота рядка, трекінг і жирність задані парами в `@theme` (`--text-*--line-height`, `--text-*--letter-spacing`, `--text-*--font-weight`).
+- Розміри тексту: `text-caption`, `text-body`, `text-heading`, `text-lead`, `text-script`, `text-display`, а для вузького екрана `text-script-sm` і `text-display-sm` (звичайний розмір вмикається з `md:`). Висота рядка, трекінг і жирність задані парами в `@theme` (`--text-*--line-height`, `--text-*--letter-spacing`, `--text-*--font-weight`).
 - Пропорції картинок: `aspect-cover` (обкладинка картки), `aspect-portrait` (портрет).
 - Відступи: тільки 8, 12, 16, 24, 32 px, тобто числа 2, 3, 4, 6, 8 у класах (`p-2`, `gap-4`), і `section` (відстань між великими секціями). Ширина контенту: `max-w-content`.
 
