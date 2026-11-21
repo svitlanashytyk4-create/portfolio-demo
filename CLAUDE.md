@@ -33,6 +33,7 @@
 
 - **Button** (`src/components/Button/Button.tsx`, Storybook: Components/Button). Кнопка або посилання (`href`). Варіанти `primary` (на `accent`, текст `ink`) і `secondary` (без заливки, межа `ink-muted`); розміри `md` і `lg`; `arrow` для стрілки. Вимкнена через `aria-disabled` (лишається у фокусі), пояснення в `disabledReason`. Не ставити на фон `sage`.
 - **FormField** (`src/components/FormField/FormField.tsx`, Storybook: Components/FormField). Текстове поле з підписом над ним (`label`). Заливка `surface`, межа `ink-muted`; помилка через `error` і `errorMessage` (межа, іконка й текст `danger`, зв'язані через `aria-describedby`); `required` додає зірочку; `disabled` — звичайний атрибут, поле не у фокусі. Значення задається `defaultValue`.
+- **WorkCard** (`src/components/WorkCard/WorkCard.tsx`, Storybook: Components/WorkCard). Картка роботи: обкладинка `aspect-cover`, назва, короткий опис; уся картка — посилання (`href`). Обкладинку імпортуй з `src/assets` і передавай в `image`, опис картинки в `imageAlt`. Зараз у `src/assets/work-cover-example.jpg` лише заглушка.
 
 ## Правила
 
