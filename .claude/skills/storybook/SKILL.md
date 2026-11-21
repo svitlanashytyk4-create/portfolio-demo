@@ -18,12 +18,13 @@ Storybook показує токени й компоненти дизайн-си�
 
 Цей розділ описує токени саме цього проєкту. Якщо назви тут не збігаються з `@theme`, правдою вважай `@theme` і скажи студенту, що розділ треба оновити.
 
-- Кольори: `canvas` (фон сторінки), `surface` (картки й поля), `line` (декоративні лінії й рамки карток), `accent`, `ink`, `ink-muted`, `danger` (помилка). Класи: `bg-canvas`, `bg-surface`, `border-line`, `bg-accent`, `text-ink`, `text-ink-muted`, `text-danger`, `border-danger`.
+- Кольори: `canvas` (фон сторінки), `surface` (картки й поля), `line` (декоративні лінії й рамки карток), `accent` (декор: лінії, зірочки, стрілки; не для тексту), `accent-ink` (золотий текст), `ink`, `ink-muted`, `danger` (помилка), `sage` (смуга послуг, підкладка портрета; текст на ній лише `canvas` або `surface`). Класи: `bg-canvas`, `bg-surface`, `border-line`, `bg-accent`, `text-accent-ink`, `text-ink`, `text-ink-muted`, `text-danger`, `border-danger`, `bg-sage`.
 - Межа поля форми й кнопки без заливки: `ink-muted` (контраст не менше 3:1), не `line`.
-- Радіуси: `rounded-control` (кнопки, поля), `rounded-card` (картки).
-- Розміри тексту: `text-caption`, `text-body`, `text-lead`, `text-heading`, `text-display`. Висота рядка, трекінг і жирність задані парами в `@theme` (`--text-*--line-height`, `--text-*--letter-spacing`, `--text-*--font-weight`).
-- Пропорції картинок: `aspect-cover` (обкладинка картки) та інші `--aspect-*` з `@theme`.
-- Відступи: тільки 8, 12, 16, 24, 32 px, тобто числа 2, 3, 4, 6, 8 у класах (`p-2`, `gap-4`).
+- Шрифти: `font-serif` (Cormorant Garamond, з кирилицею), `font-script` (Allura, лише латиниця). Підключення в `src/app/fonts.ts`.
+- Радіуси: `rounded-control` (кнопки, поля), `rounded-card` (картки), обидва прямі; `rounded-t-arch` (арка над портретом).
+- Розміри тексту: `text-caption`, `text-body`, `text-heading`, `text-lead`, `text-script`, `text-display`. Висота рядка, трекінг і жирність задані парами в `@theme` (`--text-*--line-height`, `--text-*--letter-spacing`, `--text-*--font-weight`).
+- Пропорції картинок: `aspect-cover` (обкладинка картки), `aspect-portrait` (портрет).
+- Відступи: тільки 8, 12, 16, 24, 32 px, тобто числа 2, 3, 4, 6, 8 у класах (`p-2`, `gap-4`), і `section` (відстань між великими секціями). Ширина контенту: `max-w-content`.
 
 Усе, що є в історіях, документації й компонентах, будується тільки з цього. Заборонено: hex і rgb, стандартні класи Tailwind поза системою (`bg-blue-600`, `text-sm`), значення в квадратних дужках (`p-[13px]`, `h-[150px]`), відступи поза набором. Після скидання стандартної палітри класи `text-white`, `bg-black`, `bg-white` і подібні мовчки перестають працювати: Tailwind не повідомляє про невідомий клас. Тому після кожної зміни перевіряй, що в коді немає класів, яких немає в `@theme`. Якщо історії чи документації потрібен елемент, якого немає в системі, не вигадуй його: перелічи, чого бракує, і запитай студента.
 

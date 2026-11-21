@@ -1,0 +1,109 @@
+import { Meta, ColorPalette, ColorItem, Typeset, Unstyled } from "@storybook/addon-docs/blocks";
+
+<Meta title="Foundations/Tokens" />
+
+# Токени
+
+Усі значення живуть у блоці `@theme` у `src/app/globals.css`. Ця сторінка лише показує їх.
+
+## Кольори
+
+<ColorPalette>
+  <ColorItem title="canvas" subtitle="Фон сторінки" colors={{ canvas: "var(--color-canvas)" }} />
+  <ColorItem title="surface" subtitle="Картки й поля" colors={{ surface: "var(--color-surface)" }} />
+  <ColorItem title="line" subtitle="Декоративні лінії, рамки карток" colors={{ line: "var(--color-line)" }} />
+  <ColorItem title="accent" subtitle="Декор: лінії, зірочки, стрілки. Не для тексту" colors={{ accent: "var(--color-accent)" }} />
+  <ColorItem title="accent-ink" subtitle="Золотий текст" colors={{ "accent-ink": "var(--color-accent-ink)" }} />
+  <ColorItem title="ink" subtitle="Основний текст, темні кнопки" colors={{ ink: "var(--color-ink)" }} />
+  <ColorItem title="ink-muted" subtitle="Приглушений текст, межа поля й кнопки без заливки" colors={{ "ink-muted": "var(--color-ink-muted)" }} />
+  <ColorItem title="danger" subtitle="Текст помилки й межа поля з помилкою" colors={{ danger: "var(--color-danger)" }} />
+  <ColorItem title="sage" subtitle="Смуга послуг, підкладка портрета. Текст на ній: canvas або surface" colors={{ sage: "var(--color-sage)" }} />
+</ColorPalette>
+
+## Шрифти
+
+Cormorant Garamond (`font-serif`), основний, з кирилицею.
+
+<Typeset
+  fontFamily="var(--font-serif)"
+  fontSizes={[
+    "var(--text-caption)",
+    "var(--text-body)",
+    "var(--text-heading)",
+    "var(--text-lead)",
+    "var(--text-display)",
+  ]}
+  sampleText="Дизайн, який має сенс. Design that makes sense."
+/>
+
+Allura (`font-script`), рукописний, лише латиниця.
+
+<Typeset fontFamily="var(--font-script)" fontSizes={["var(--text-script)"]} sampleText="Hello, I'm Svitlana" />
+
+## Стилі тексту
+
+<Unstyled>
+  <div className="flex flex-col gap-4 bg-canvas p-6 font-serif text-ink">
+    <p className="text-caption">text-caption · меню, лого, мітки</p>
+    <p className="text-body">text-body · текст кнопок, описи</p>
+    <p className="text-heading">text-heading · назви в картках</p>
+    <p className="text-lead">text-lead · лід-абзац, рядок ролі</p>
+    <p className="font-script text-script text-accent-ink">Hello, I'm Svitlana</p>
+    <p className="text-display">text-display</p>
+    <p className="text-body text-ink-muted">text-ink-muted · приглушений текст</p>
+    <p className="text-body text-danger">text-danger · текст помилки</p>
+  </div>
+</Unstyled>
+
+## Радіуси
+
+<Unstyled>
+  <div className="grid grid-cols-3 gap-6 bg-canvas p-6 font-serif text-ink">
+    <div className="flex flex-col gap-2">
+      <div className="aspect-cover rounded-control border border-ink-muted bg-surface" />
+      <p className="text-caption">rounded-control · кнопки, поля</p>
+    </div>
+    <div className="flex flex-col gap-2">
+      <div className="aspect-cover rounded-card border border-line bg-surface" />
+      <p className="text-caption">rounded-card · картки</p>
+    </div>
+    <div className="flex flex-col gap-2">
+      <div className="aspect-portrait rounded-t-arch bg-sage" />
+      <p className="text-caption">rounded-t-arch · арка над портретом</p>
+    </div>
+  </div>
+</Unstyled>
+
+## Пропорції картинок
+
+<Unstyled>
+  <div className="grid grid-cols-3 gap-6 bg-canvas p-6 font-serif text-ink">
+    <div className="flex flex-col gap-2">
+      <div className="aspect-cover bg-surface" />
+      <p className="text-caption">aspect-cover · обкладинка роботи</p>
+    </div>
+    <div className="flex flex-col gap-2">
+      <div className="aspect-portrait bg-surface" />
+      <p className="text-caption">aspect-portrait · портрет</p>
+    </div>
+  </div>
+</Unstyled>
+
+## Відступи
+
+Дозволені кроки: 2, 3, 4, 6, 8 у класах (`p-2`, `gap-4`) і `section` для відстані між великими секціями.
+
+<Unstyled>
+  <div className="flex flex-col gap-3 bg-canvas p-6 font-serif text-ink">
+    <div className="flex items-center gap-4"><div className="size-2 bg-accent" /><p className="text-caption">2</p></div>
+    <div className="flex items-center gap-4"><div className="size-3 bg-accent" /><p className="text-caption">3</p></div>
+    <div className="flex items-center gap-4"><div className="size-4 bg-accent" /><p className="text-caption">4</p></div>
+    <div className="flex items-center gap-4"><div className="size-6 bg-accent" /><p className="text-caption">6</p></div>
+    <div className="flex items-center gap-4"><div className="size-8 bg-accent" /><p className="text-caption">8</p></div>
+    <div className="flex items-center gap-4"><div className="size-section bg-accent" /><p className="text-caption">section</p></div>
+  </div>
+</Unstyled>
+
+## Розмітка
+
+Ширина контенту: `max-w-content`.

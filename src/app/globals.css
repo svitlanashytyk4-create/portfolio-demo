@@ -1,7 +1,86 @@
 @import "tailwindcss";
 
 /*
- * Стартова тема create-next-app прибрана.
- * Дизайн-токени (кольори, типографіка, відступи) додамо наступним кроком
- * у блоці @theme.
+ * Дизайн-токени портфоліо. Це єдине джерело значень:
+ * у компонентах і історіях лише класи з цих токенів.
  */
+
+@theme {
+  /* Скидаємо стандартні шкали Tailwind: працюють лише токени системи. */
+  --color-*: initial;
+  --text-*: initial;
+  --radius-*: initial;
+  --aspect-*: initial;
+  --font-*: initial;
+
+  /* ---------- Кольори ---------- */
+  --color-canvas: #f5f0e9; /* фон сторінки */
+  --color-surface: #e6e6e0; /* картки й поля */
+  --color-line: #d8c9b8; /* декоративні лінії, рамки карток */
+  --color-accent: #cb9c60; /* декор: лінії, зірочки, стрілки (не для тексту) */
+  --color-accent-ink: #86673f; /* золотий текст: 4,6:1 на canvas */
+  --color-ink: #30382f; /* основний текст, темні кнопки */
+  --color-ink-muted: #5e6656; /* приглушений текст, межа поля й кнопки без заливки */
+  --color-danger: #b3261e; /* текст помилки й межа поля з помилкою */
+  --color-sage: #68705e; /* смуга послуг, підкладка портрета; текст на ній canvas або surface */
+
+  /* ---------- Розміри тексту ---------- */
+  --text-caption: 16px; /* меню, лого, мітки */
+  --text-caption--line-height: 1.2;
+  --text-caption--letter-spacing: 0;
+  --text-caption--font-weight: 500;
+
+  --text-body: 18px; /* текст кнопок, описи */
+  --text-body--line-height: 1.2;
+  --text-body--letter-spacing: 0;
+  --text-body--font-weight: 500;
+
+  --text-heading: 22px; /* назви в картках */
+  --text-heading--line-height: 1.2;
+  --text-heading--letter-spacing: 0;
+  --text-heading--font-weight: 600;
+
+  --text-lead: 26px; /* лід-абзац, рядок ролі */
+  --text-lead--line-height: 1.2;
+  --text-lead--letter-spacing: 0;
+  --text-lead--font-weight: 300;
+
+  --text-script: 58px; /* рукописне привітання (шрифт script) */
+  --text-script--line-height: 1.2;
+  --text-script--letter-spacing: 0;
+  --text-script--font-weight: 400;
+
+  --text-display: 72px; /* головний заголовок */
+  --text-display--line-height: 1.2;
+  --text-display--letter-spacing: 0;
+  --text-display--font-weight: 600;
+
+  /* ---------- Радіуси ---------- */
+  --radius-control: 0; /* кнопки, поля: прямі кути */
+  --radius-card: 0; /* картки: прямі кути */
+  --radius-arch: 100px; /* арка над портретом */
+
+  /* ---------- Пропорції картинок ---------- */
+  --aspect-cover: 4 / 3; /* обкладинка роботи */
+  --aspect-portrait: 3 / 4; /* портрет */
+
+  /* ---------- Розмітка сторінки ---------- */
+  --spacing-section: 56px; /* відстань між великими секціями */
+  --container-content: 1349px; /* ширина контенту */
+}
+
+/* Шрифти приходять змінними з next/font (src/app/fonts.ts). */
+@theme inline {
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-script: var(--font-allura), "Allura", cursive;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-serif);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
