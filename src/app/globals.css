@@ -74,6 +74,39 @@
   --aspect-cover: 4 / 3; /* обкладинка роботи */
   --aspect-portrait: 3 / 4; /* портрет */
 
+  /* ---------- Анімація ---------- */
+  --animate-float: float 6s ease-in-out infinite; /* повільне погойдування вгору-вниз */
+  --animate-spin-slow: spin-slow 16s linear infinite; /* дуже повільне обертання */
+  /* випливає знизу з прозорості, а потім м'яко погойдується */
+  --animate-emerge: emerge 1s cubic-bezier(0.22, 1, 0.36, 1) both, float 6s ease-in-out 1s infinite;
+
+  @keyframes emerge {
+    from {
+      opacity: 0;
+      translate: 0 32px;
+    }
+    to {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      translate: 0 0;
+    }
+    50% {
+      translate: 0 -8px;
+    }
+  }
+
+  @keyframes spin-slow {
+    to {
+      rotate: 360deg;
+    }
+  }
+
   /* ---------- Розмітка сторінки ---------- */
   --spacing-section: 56px; /* відстань між великими секціями */
   --container-content: 1349px; /* ширина контенту */

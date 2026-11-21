@@ -68,11 +68,18 @@ export function IconLotus() {
   );
 }
 
-/** Кругла плашка «Design · Creativity · Strategy» з краєм на портреті. */
+/**
+ * Кругла плашка «Design · Creativity · Strategy» з краєм на портреті.
+ * Випливає знизу при завантаженні, потім повільно погойдується, зірочка в ній обертається (лише якщо людина не вимкнула анімацію в системі).
+ * На вузькому екрані плашка зменшена до 75 %.
+ */
 export function Badge({ className = "" }: { className?: string }) {
   const words = ["Design", "Creativity", "Strategy"];
   return (
-    <div aria-hidden="true" className={`flex items-center justify-center ${className}`}>
+    <div
+      aria-hidden="true"
+      className={`flex origin-bottom-right scale-75 items-center justify-center motion-safe:animate-emerge md:scale-100 ${className}`}
+    >
       <svg width="165" height="165" viewBox="0 0 165 165" className="fill-line stroke-accent">
         <circle cx="82.5" cy="82.5" r="81.5" strokeWidth="1" />
       </svg>
@@ -83,7 +90,7 @@ export function Badge({ className = "" }: { className?: string }) {
             {index < words.length - 1 && <Rule width={55} />}
           </div>
         ))}
-        <Star />
+        <Star className="motion-safe:animate-spin-slow" />
       </div>
     </div>
   );

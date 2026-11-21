@@ -107,6 +107,27 @@ Allura (`font-script`), рукописний, лише латиниця.
   </div>
 </Unstyled>
 
+## Анімація
+
+Завжди з префіксом `motion-safe:`: якщо людина вимкнула анімацію в системі, елемент стоїть на місці.
+
+<Unstyled>
+  <div className="flex items-center gap-8 bg-canvas p-6 font-serif text-ink">
+    <div className="flex flex-col items-center gap-2">
+      <div className="size-8 bg-accent motion-safe:animate-float" />
+      <p className="text-caption">animate-float · погойдування</p>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <div className="size-8 bg-accent motion-safe:animate-emerge" />
+      <p className="text-caption">animate-emerge · випливає, потім погойдується</p>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <div className="size-8 bg-accent motion-safe:animate-spin-slow" />
+      <p className="text-caption">animate-spin-slow · повільне обертання</p>
+    </div>
+  </div>
+</Unstyled>
+
 ## Розмітка
 
 Ширина контенту: `max-w-content`.
