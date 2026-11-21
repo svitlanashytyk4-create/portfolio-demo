@@ -7,6 +7,11 @@
       "Bash(vercel deploy --target production *)",
       "Bash(vercel promote *)",
       "Bash(vercel rollback *)",
+      "Bash(npx*vercel*--prod*)",
+      "Bash(npx*vercel*--target=production*)",
+      "Bash(npx*vercel*--target production*)",
+      "Bash(npx*vercel*promote*)",
+      "Bash(npx*vercel*rollback*)",
       "Bash(git push *)"
     ],
     "deny": [
