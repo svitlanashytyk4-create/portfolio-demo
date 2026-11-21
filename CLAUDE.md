@@ -44,3 +44,5 @@
 ## Посилання
 
 - План сайту: [docs/site-plan.md](docs/site-plan.md)
+- Сайт: https://portfolio-demo-khaki-seven.vercel.app
+- Storybook (токени й компоненти): https://portfolio-demo-khaki-seven.vercel.app/storybook, локально `npm run storybook` → http://localhost:6006. Збирається в `public/storybook` командою `npm run build`; тека в `.gitignore`, вручну не редагуй.
