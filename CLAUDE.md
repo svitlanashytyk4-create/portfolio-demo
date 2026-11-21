@@ -29,7 +29,9 @@
 
 ## Компоненти
 
-Заповнимо далі.
+Кожен компонент лежить у `src/components/<Назва>/` разом з історією `<Назва>.stories.tsx`. Опис, параметри й стани — на сторінці Docs у Storybook.
+
+- **Button** (`src/components/Button/Button.tsx`, Storybook: Components/Button). Кнопка або посилання (`href`). Варіанти `primary` (на `accent`, текст `ink`) і `secondary` (без заливки, межа `ink-muted`); розміри `md` і `lg`; `arrow` для стрілки. Вимкнена через `aria-disabled` (лишається у фокусі), пояснення в `disabledReason`. Не ставити на фон `sage`.
 
 ## Правила
 
