@@ -1,8 +1,9 @@
 import Image from "next/image";
 import portrait from "@/assets/portrait.png";
+import { Badge } from "@/components/Badge/Badge";
 import { Button } from "@/components/Button/Button";
 import { Navigation } from "@/components/Navigation/Navigation";
-import { Badge, IconComputer, IconLotus, IconPalette, IconSparkles, Rule, Star } from "./_home/decor";
+import { IconComputer, IconLotus, IconPalette, IconSparkles, Rule, Star } from "./_home/decor";
 
 const services = [
   { icon: <IconComputer />, title: "UX/UI design", text: "Websites & web products" },

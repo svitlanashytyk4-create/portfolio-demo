@@ -1,5 +1,5 @@
 /*
- * Декоративна графіка першого екрана: зірочка, лінії, іконки послуг, кругла плашка.
+ * Декоративна графіка першого екрана: зірочка, лінії, іконки послуг.
  * Кольори задаються класами токенів через currentColor, hex у файлах немає.
  */
 
@@ -65,33 +65,5 @@ export function IconLotus() {
         <path d="M6.20834 24.2083H22.2083" />
       </g>
     </svg>
-  );
-}
-
-/**
- * Кругла плашка «Design · Creativity · Strategy» з краєм на портреті.
- * Випливає знизу при завантаженні, потім повільно погойдується, зірочка в ній обертається (лише якщо людина не вимкнула анімацію в системі).
- * На вузькому екрані плашка зменшена до 75 %.
- */
-export function Badge({ className = "" }: { className?: string }) {
-  const words = ["Design", "Creativity", "Strategy"];
-  return (
-    <div
-      aria-hidden="true"
-      className={`flex origin-bottom-right scale-75 items-center justify-center motion-safe:animate-emerge md:scale-100 ${className}`}
-    >
-      <svg width="165" height="165" viewBox="0 0 165 165" className="fill-line stroke-accent">
-        <circle cx="82.5" cy="82.5" r="81.5" strokeWidth="1" />
-      </svg>
-      <div className="absolute flex flex-col items-center gap-2 text-caption uppercase text-ink">
-        {words.map((word, index) => (
-          <div key={word} className="flex flex-col items-center gap-2">
-            <span>{word}</span>
-            {index < words.length - 1 && <Rule width={55} />}
-          </div>
-        ))}
-        <Star className="motion-safe:animate-spin-slow" />
-      </div>
-    </div>
   );
 }
