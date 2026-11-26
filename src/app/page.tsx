@@ -130,7 +130,7 @@ export default function Home() {
           className="mt-section grid items-center gap-8 pt-8 md:grid-cols-12"
         >
           {/* Фото з гілкою. TODO: замінити портрет на фото за роботою, тоді дати йому alt. */}
-          <div className="relative mx-auto w-full max-w-sm md:col-span-4 md:max-w-none">
+          <div className="relative mx-auto w-full max-w-sm md:col-span-5 md:max-w-none xl:col-span-4">
             <svg aria-hidden="true" viewBox="0 0 100 100" className="absolute -bottom-6 -left-6 w-2/3 fill-line/60">
               <circle cx="50" cy="50" r="50" />
             </svg>
@@ -145,8 +145,8 @@ export default function Home() {
             <Branch className="absolute -bottom-8 -left-6 h-auto w-28 text-sage motion-safe:animate-float md:-left-14 md:w-32" />
           </div>
 
-          <div className="flex flex-col md:col-span-5">
-            <p className="font-script text-script-sm text-accent-ink md:text-script">Nice to meet you</p>
+          <div className="flex flex-col md:col-span-7 xl:col-span-5">
+            <p className="font-script text-script-sm text-accent-ink lg:text-script">Nice to meet you</p>
             <div className="flex items-center gap-2">
               <Rule width={81} strokeWidth={2} />
               <Star />
@@ -179,12 +179,12 @@ export default function Home() {
             </div>
           </div>
 
-          <dl className="flex flex-col divide-y divide-canvas/30 bg-sage p-8 text-canvas md:col-span-3">
+          <dl className="flex flex-col divide-y divide-canvas/30 bg-sage p-8 text-canvas md:col-span-12 md:flex-row md:divide-x md:divide-y-0 xl:col-span-3 xl:flex-col xl:divide-x-0 xl:divide-y">
             {[
               { icon: <IconFolder />, value: "3", label: "learning and personal projects" },
               { icon: <IconLayers />, value: "2", label: "projects at a time, max" },
             ].map((fact) => (
-              <div key={fact.label} className="flex items-center gap-4 py-6 first:pt-0 last:pb-0">
+              <div key={fact.label} className="flex items-center gap-4 py-6 first:pt-0 last:pb-0 md:flex-1 md:px-6 md:py-0 md:first:pl-0 md:last:pr-0 xl:px-0 xl:py-6 xl:first:pt-0 xl:last:pb-0">
                 <span className="text-line">{fact.icon}</span>
                 <div className="flex flex-col-reverse">
                   <dt className="text-body">{fact.label}</dt>
