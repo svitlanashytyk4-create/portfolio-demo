@@ -20,6 +20,8 @@ import {
   Rule,
   Star,
 } from "./_home/decor";
+import { ContactForm } from "./_home/ContactForm";
+import { Footer } from "./_home/Footer";
 
 const services = [
   { icon: <IconComputer />, title: "UX/UI design", text: "Websites & web products" },
@@ -44,7 +46,7 @@ const terms = [
 
 export default function Home() {
   return (
-    <div id="home" className="mx-auto max-w-content px-4 pb-section md:px-8">
+    <div id="home" className="mx-auto max-w-content px-4 md:px-8">
       {/* ---------- Шапка ---------- */}
       <header className="relative flex items-center justify-between gap-6 pt-8">
         <a
@@ -215,7 +217,7 @@ export default function Home() {
           <div className="relative mt-8">
             {/* Пунктир, що з'єднує кроки: вертикальний на вузькому екрані, горизонтальний на широкому. */}
             <span aria-hidden="true" className="absolute inset-y-0 left-1/2 border-l border-dashed border-accent lg:hidden" />
-            <span aria-hidden="true" className="absolute inset-x-[12%] top-12 hidden border-t border-dashed border-accent lg:block" />
+            <span aria-hidden="true" className="absolute inset-x-section top-12 hidden border-t border-dashed border-accent lg:block" />
             <ol className="relative grid gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-4">
               {processSteps.map((step, index) => (
                 <li
@@ -241,9 +243,7 @@ export default function Home() {
                   <p className={`mt-2 text-body ${step.highlight ? "text-surface" : "text-ink-muted"}`}>{step.text}</p>
                   {step.highlight && (
                     <p className="mt-4 inline-flex items-center gap-2 border border-line px-3 py-1 text-caption text-surface">
-                      <span className="size-4 [&>svg]:size-4">
-                        <IconSparkles />
-                      </span>
+                      <IconSparkles className="size-4" />
                       AI: faster variants
                     </p>
                   )}
@@ -273,7 +273,39 @@ export default function Home() {
             </Button>
           </div>
         </section>
+
+        {/* ---------- Заявка ---------- */}
+        <section id="contacts" aria-labelledby="contacts-title" className="mt-section pt-8">
+          {/* Роздільник: відділяє заявку від кнопки розділу «Послуги й процес». */}
+          <div aria-hidden="true" className="flex items-center gap-4">
+            <span className="flex-1 border-t border-line" />
+            <Star />
+            <span className="flex-1 border-t border-line" />
+          </div>
+          <div className="mt-section grid gap-8 md:grid-cols-12">
+            <div className="flex flex-col md:col-span-5">
+              <p className="font-script text-script-sm text-accent-ink md:text-script">Let&apos;s talk</p>
+              <div className="flex items-center gap-2">
+                <Rule width={81} strokeWidth={2} />
+                <Star />
+                <span className="ml-4 text-caption uppercase">Contacts</span>
+              </div>
+              <h2 id="contacts-title" className="mt-4 text-display-sm">
+                Tell me about your <span className="text-accent-ink">project</span>
+              </h2>
+              <p className="mt-3 text-body text-ink-muted">
+                Write a few lines about your task, and I&apos;ll reply with questions and a time estimate. I&apos;m also
+                open to related requests.
+              </p>
+            </div>
+            <div className="md:col-span-7">
+              <ContactForm />
+            </div>
+          </div>
+        </section>
       </main>
+
+      <Footer />
     </div>
   );
 }

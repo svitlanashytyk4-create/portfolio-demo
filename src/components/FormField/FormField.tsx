@@ -23,6 +23,11 @@ export interface FormFieldProps {
   autoComplete?: HTMLInputAutoCompleteAttribute;
   /** Підказка всередині порожнього поля. Не замінює підпис. */
   placeholder?: string;
+  /**
+   * Підказка під полем, наприклад про ліміт символів. Зв'язана з полем через
+   * `aria-describedby`. Поки в полі є помилка, замість підказки показується текст помилки.
+   */
+  hint?: string;
   /** Початкове значення. Якщо задане, поле показується заповненим. */
   defaultValue?: string;
   /** Поле з помилкою: межа й текст `danger`, іконка помилки. */
@@ -79,6 +84,7 @@ export function FormField({
   rows = 5,
   autoComplete,
   placeholder,
+  hint,
   defaultValue,
   error = false,
   errorMessage,
@@ -90,7 +96,10 @@ export function FormField({
   const generatedId = useId();
   const id = idProp ?? generatedId;
   const errorId = `${id}-error`;
+  const hintId = `${id}-hint`;
   const showError = error && !disabled;
+  const showHint = Boolean(hint) && !(showError && errorMessage);
+  const describedBy = showError && errorMessage ? errorId : showHint ? hintId : undefined;
   const state = disabled ? "disabled" : showError ? "error" : "default";
 
   const shared = {
@@ -103,7 +112,7 @@ export function FormField({
     disabled,
     onChange,
     "aria-invalid": showError || undefined,
-    "aria-describedby": showError && errorMessage ? errorId : undefined,
+    "aria-describedby": describedBy,
   };
 
   return (
@@ -121,6 +130,11 @@ export function FormField({
         <textarea {...shared} rows={rows} className={`${inputBase} ${inputState[state]} resize-y`} />
       ) : (
         <input {...shared} type={type} className={`${inputBase} ${inputState[state]}`} />
+      )}
+      {showHint && (
+        <p id={hintId} className="text-caption text-ink-muted">
+          {hint}
+        </p>
       )}
       {showError && errorMessage && (
         <p id={errorId} className="flex items-center gap-2 text-caption text-danger">

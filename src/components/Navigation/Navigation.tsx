@@ -1,21 +1,9 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
+import { defaultNavItems, type NavItem } from "./nav-items";
 
-export interface NavItem {
-  /** Текст пункту. Набирай звичайними літерами: великими їх робить меню. */
-  label: string;
-  /** Адреса розділу або сторінки. */
-  href: string;
-}
-
-export const defaultNavItems: NavItem[] = [
-  { label: "Home", href: "#home" },
-  { label: "About me", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Works", href: "#works" },
-  { label: "Contacts", href: "#contacts" },
-];
+export { defaultNavItems, type NavItem };
 
 export interface NavigationProps {
   /** Пункти меню. За замовчуванням — п'ять розділів сайту. */

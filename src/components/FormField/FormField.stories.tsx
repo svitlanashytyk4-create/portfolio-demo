@@ -13,6 +13,7 @@ const description = `
 - \`rows\` — висота багаторядкового поля в рядках (\`5\`).
 - \`autoComplete\` — підказка для автозаповнення браузером: \`name\`, \`email\`, \`tel\`, \`off\`… (немає).
 - \`placeholder\` — підказка в порожньому полі; не замінює підпис (немає).
+- \`hint\` — підказка під полем \`text-caption\` \`ink-muted\`, наприклад про ліміт символів; зв'язана через \`aria-describedby\`. Поки в полі є помилка, замість підказки показується текст помилки (немає).
 - \`defaultValue\` — початкове значення; якщо задане, поле заповнене (немає).
 - \`error\` — стан помилки (\`false\`).
 - \`errorMessage\` — текст помилки під полем (немає).
@@ -116,6 +117,7 @@ export const Message: Story = {
     placeholder: "What are you building, and what do you need from a designer?",
     multiline: true,
     rows: 6,
+    hint: "Up to 1000 characters",
     required: true,
     errorMessage: "Tell me briefly about your task",
   },
