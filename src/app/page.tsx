@@ -30,9 +30,9 @@ const services = [
   { icon: <IconLotus />, title: "Design systems", text: "Consistent & scalable UI" },
 ];
 
-/* TODO: замінити [TBD] на реальні строки (питання 24 у docs/site-plan.md) перед публікацією. */
+/* TODO: замінити [TBD] на строки на екран і проєкт (питання 24 у docs/site-plan.md). */
 const processSteps = [
-  { icon: <IconMessage />, title: "Message", text: "You tell me about the task. I reply within [TBD]." },
+  { icon: <IconMessage />, title: "Message", text: "You tell me about the task. I reply within a day." },
   { icon: <IconTarget />, title: "Brief", text: "Goals, users, scope. I estimate the hours and timeline." },
   { icon: <IconPencil />, title: "Design", text: "Structure, visuals, layouts. Review rounds with you.", highlight: true },
   { icon: <IconPackage />, title: "Handoff", text: "Figma files with components and states, ready for developers." },
@@ -41,7 +41,7 @@ const processSteps = [
 const terms = [
   { icon: <IconClock />, title: "Hourly", text: "Rate after we discuss the task" },
   { icon: <IconLayers />, title: "Up to 2 projects", text: "So yours gets real focus" },
-  { icon: <IconCalendar />, title: "Timelines", text: "Screen [TBD] · project [TBD] · reply [TBD]" },
+  { icon: <IconCalendar />, title: "Timelines", text: "Screen [TBD] · project [TBD] · reply within a day" },
 ];
 
 export default function Home() {

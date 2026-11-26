@@ -5,6 +5,7 @@ import { Button } from "@/components/Button/Button";
 import { FormField } from "@/components/FormField/FormField";
 import { sendContactRequest } from "./contact-actions";
 import {
+  CONTACT_EMAIL,
   HONEYPOT_FIELD,
   contactCopy,
   contactFields,
@@ -73,12 +74,35 @@ export function ContactForm() {
   }
 
   const succeeded = state.status === "success";
+  // Збій показуємо лише для відповіді сервера, а не поки йде нове надсилання.
+  const failed = state.status === "failed" && !pending;
 
   return (
     <div className="flex flex-col gap-6">
-      {/* Контейнер для повідомлень є на сторінці завжди; текст з'являється після успішного надсилання. */}
-      <div role="status" className={succeeded ? "border border-sage bg-surface p-6 text-body text-ink" : ""}>
-        {succeeded ? contactCopy.success : ""}
+      {/* Контейнер для повідомлень є на сторінці завжди; текст з'являється після надсилання: успіх або збій. */}
+      <div
+        role="status"
+        className={
+          succeeded
+            ? "border border-sage bg-surface p-6 text-body text-ink"
+            : failed
+              ? "border-2 border-danger bg-surface p-6 text-body text-danger"
+              : ""
+        }
+      >
+        {succeeded && contactCopy.success}
+        {failed && (
+          <>
+            {contactCopy.sendFailed}{" "}
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="underline underline-offset-2 hover:no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+            >
+              {CONTACT_EMAIL}
+            </a>
+            .
+          </>
+        )}
       </div>
 
       {!succeeded && (

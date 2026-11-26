@@ -12,8 +12,12 @@ export type ContactField = "name" | "email" | "message";
 export type ContactValues = Record<ContactField, string>;
 export type ContactErrors = Partial<Record<ContactField, string>>;
 
+/** Публічна пошта: показуємо в повідомленні про збій. Заявки приходять на CONTACT_TO_EMAIL з .env. */
+export const CONTACT_EMAIL = "svitlanashytyk4@gmail.com";
+
 export interface ContactState {
-  status: "idle" | "error" | "success";
+  /** `error` — помилки в полях; `failed` — поля правильні, але лист не надіслався. */
+  status: "idle" | "error" | "failed" | "success";
   /** Введені значення: повертаються з сервера, щоб поля не очищались після помилки. */
   values: ContactValues;
   errors: ContactErrors;
@@ -31,6 +35,8 @@ export const contactCopy = {
   submit: "Send request",
   submitting: "Sending…",
   success: "Thank you, your request has been sent. I will get back to you soon.",
+  /** Перед адресою пошти, яка йде посиланням. */
+  sendFailed: "Your request wasn't sent. Please try again or email me at",
 } as const;
 
 export const emptyValues: ContactValues = { name: "", email: "", message: "" };

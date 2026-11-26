@@ -38,6 +38,14 @@
 - **Navigation** (`src/components/Navigation/Navigation.tsx`, Storybook: Components/Navigation). Головне меню в шапці. Пункти в `items` (за замовчуванням п'ять розділів сайту), поточний задається `activeHref` (`aria-current="page"`, підкреслення `accent`). До 768 px меню згортається в кнопку «Menu»: список відкривається поверх контенту, закривається Escape, кліком поза меню або вибором пункту. Не ставити на фон `sage`.
 - **Badge** (`src/components/Badge/Badge.tsx`, Storybook: Components/Badge). Кругла декоративна плашка зі словами в колонку (`words`) і зірочкою, заливка `line` з прозорістю 60 %. `animated` вмикає `animate-emerge` і обертання зірочки. До 768 px зменшена до 75 %. Позиціонування передавай через `className`. Прихована від скрінрідера; не став над темним строкатим фото.
 
+## Форма заявки
+
+- Розділ `#contacts` на головній, форма в `src/app/_home/ContactForm.tsx`. Перевірки й тексти (`contactCopy`) спільні для браузера й сервера: `src/app/_home/contact-validation.ts`.
+- Серверна функція (Server Action) `sendContactRequest` у `src/app/_home/contact-actions.ts`: після перевірки полів і пастки для ботів надсилає лист через Resend (`resend.emails.send`). Від «Портфоліо <onboarding@resend.dev>» на адресу зі змінної `CONTACT_TO_EMAIL` (пошта акаунта Resend: з тестовою адресою `onboarding@resend.dev` Resend шле лише на неї), `replyTo` — пошта відвідувача, текст листа простим текстом. Публічна пошта для повідомлення про збій — `CONTACT_EMAIL` у `contact-validation.ts`.
+- Змінні `RESEND_API_KEY` і `CONTACT_TO_EMAIL`: локально в `.env.local`, на сайті — у змінних середовища проєкту на Vercel. Без будь-якої з них форма показує збій. Клієнт Resend створюється всередині серверної функції. Ключ у код не записуємо.
+- Будь-який збій (немає ключа, виняток, `error` у відповіді Resend) — форма лишається з введеним, над нею повідомлення `sendFailed`; сама помилка йде в `console.error` на сервері (термінал dev-сервера, логи Vercel), без ключа.
+- Файли `.env*` не відкриваємо й не читаємо; вони в `.gitignore`.
+
 ## Правила
 
 Заповнимо далі.
