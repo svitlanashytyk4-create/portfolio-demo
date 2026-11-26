@@ -3,6 +3,8 @@
  * Кольори задаються класами токенів через currentColor, hex у файлах немає.
  */
 
+import type { ReactNode } from "react";
+
 export function Star({ className = "" }: { className?: string }) {
   return (
     <svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" className={`shrink-0 text-accent ${className}`}>
@@ -65,5 +67,64 @@ export function IconLotus() {
         <path d="M6.20834 24.2083H22.2083" />
       </g>
     </svg>
+  );
+}
+
+/* ---------- Розділ «Про мене» ---------- */
+
+/** Гілка з листям (лінія й заливка currentColor). Колір задавай класом, наприклад text-sage. */
+export function Branch({ className = "" }: { className?: string }) {
+  const leaves = [
+    { cx: 46, cy: 204, angle: -40 },
+    { cx: 76, cy: 178, angle: 40 },
+    { cx: 46, cy: 146, angle: -38 },
+    { cx: 80, cy: 118, angle: 38 },
+    { cx: 52, cy: 88, angle: -34 },
+    { cx: 84, cy: 60, angle: 34 },
+    { cx: 70, cy: 22, angle: 4 },
+  ];
+  return (
+    <svg aria-hidden="true" width="120" height="240" viewBox="0 0 120 240" fill="none" className={className}>
+      <path d="M60 238C57 184 62 124 70 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      {leaves.map(({ cx, cy, angle }) => (
+        <ellipse
+          key={`${cx}-${cy}`}
+          cx={cx}
+          cy={cy}
+          rx="8"
+          ry="20"
+          transform={`rotate(${angle} ${cx} ${cy})`}
+          fill="currentColor"
+          fillOpacity="0.85"
+        />
+      ))}
+    </svg>
+  );
+}
+
+function FactIcon({ children }: { children: ReactNode }) {
+  return (
+    <svg aria-hidden="true" width="32" height="32" viewBox="0 0 32 32" fill="none" className="shrink-0">
+      <g stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        {children}
+      </g>
+    </svg>
+  );
+}
+
+export function IconFolder() {
+  return (
+    <FactIcon>
+      <path d="M3 8a2 2 0 0 1 2-2h7l3 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+    </FactIcon>
+  );
+}
+
+export function IconLayers() {
+  return (
+    <FactIcon>
+      <rect x="3" y="10" width="18" height="18" />
+      <path d="M10 10V4h19v18h-8" />
+    </FactIcon>
   );
 }

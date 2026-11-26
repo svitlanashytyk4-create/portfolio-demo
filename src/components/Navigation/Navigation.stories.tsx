@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { defaultNavItems, Navigation } from "./Navigation";
 
 const description = `
-Головне меню сайту в шапці: перехід між розділами Home, Works, Services, About me, Contacts.
+Головне меню сайту в шапці: перехід між розділами Home, About me, Services, Works, Contacts.
 
 **Параметри (за замовчуванням).**
 - \`items\` — пункти меню, масив \`{ label, href }\` (п'ять розділів сайту).

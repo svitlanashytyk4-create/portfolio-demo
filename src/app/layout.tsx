@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={fontVariables}>
-      <body>{children}</body>
+      <body className="overflow-x-clip">{children}</body>
     </html>
   );
 }

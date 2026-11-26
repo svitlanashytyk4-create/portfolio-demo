@@ -3,7 +3,17 @@ import portrait from "@/assets/portrait.png";
 import { Badge } from "@/components/Badge/Badge";
 import { Button } from "@/components/Button/Button";
 import { Navigation } from "@/components/Navigation/Navigation";
-import { IconComputer, IconLotus, IconPalette, IconSparkles, Rule, Star } from "./_home/decor";
+import {
+  Branch,
+  IconComputer,
+  IconFolder,
+  IconLayers,
+  IconLotus,
+  IconPalette,
+  IconSparkles,
+  Rule,
+  Star,
+} from "./_home/decor";
 
 const services = [
   { icon: <IconComputer />, title: "UX/UI design", text: "Websites & web products" },
@@ -90,6 +100,78 @@ export default function Home() {
               </div>
             </div>
           ))}
+        </section>
+
+        {/* ---------- Про мене ---------- */}
+        <section
+          id="about"
+          aria-labelledby="about-title"
+          className="mt-section grid items-center gap-8 pt-8 md:grid-cols-12"
+        >
+          {/* Фото з гілкою. TODO: замінити портрет на фото за роботою, тоді дати йому alt. */}
+          <div className="relative mx-auto w-full max-w-sm md:col-span-4 md:max-w-none">
+            <svg aria-hidden="true" viewBox="0 0 100 100" className="absolute -bottom-6 -left-6 w-2/3 fill-line/60">
+              <circle cx="50" cy="50" r="50" />
+            </svg>
+            <div className="relative overflow-hidden rounded-tl-arch rounded-br-arch bg-surface">
+              <Image
+                src={portrait}
+                alt=""
+                sizes="(max-width: 768px) 90vw, 30vw"
+                className="aspect-portrait w-full object-cover object-top"
+              />
+            </div>
+            <Branch className="absolute -bottom-8 -left-6 h-auto w-28 text-sage motion-safe:animate-float md:-left-14 md:w-32" />
+          </div>
+
+          <div className="flex flex-col md:col-span-5">
+            <p className="font-script text-script-sm text-accent-ink md:text-script">Nice to meet you</p>
+            <div className="flex items-center gap-2">
+              <Rule width={81} strokeWidth={2} />
+              <Star />
+              <span className="ml-4 text-caption uppercase">About me</span>
+            </div>
+            <h2 id="about-title" className="mt-4 text-display-sm">
+              From learning to <span className="text-accent-ink">real projects</span>
+            </h2>
+            <p className="mt-3 text-body text-ink-muted">
+              A UI/UX designer at the start of my career. I studied UI/UX design at GoIT, and my work so far is
+              learning and personal projects — no client work yet.
+            </p>
+            <p className="mt-6 text-caption uppercase text-accent-ink">What I did myself</p>
+            <ul className="mt-3 flex flex-col gap-2 text-body">
+              {[
+                "Clinic360 admin page, end to end: tables, dashboard, charts",
+                "Visual direction: colors and typography",
+                "Page structure and block ideas",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <Star className="mt-0.5 size-4" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8">
+              <Button href="#services" variant="secondary" arrow>
+                How I work
+              </Button>
+            </div>
+          </div>
+
+          <dl className="flex flex-col divide-y divide-canvas/30 bg-sage p-8 text-canvas md:col-span-3">
+            {[
+              { icon: <IconFolder />, value: "3", label: "learning and personal projects" },
+              { icon: <IconLayers />, value: "2", label: "projects at a time, max" },
+            ].map((fact) => (
+              <div key={fact.label} className="flex items-center gap-4 py-6 first:pt-0 last:pb-0">
+                <span className="text-line">{fact.icon}</span>
+                <div className="flex flex-col-reverse">
+                  <dt className="text-body">{fact.label}</dt>
+                  <dd className="text-display-sm lining-nums">{fact.value}</dd>
+                </div>
+              </div>
+            ))}
+          </dl>
         </section>
       </main>
     </div>
