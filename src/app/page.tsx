@@ -7,8 +7,8 @@ import { IconComputer, IconLotus, IconPalette, IconSparkles, Rule, Star } from "
 
 const services = [
   { icon: <IconComputer />, title: "UX/UI design", text: "Websites & web products" },
-  { icon: <IconPalette />, title: "Dashboards", text: "Admin panels & B2B SaaS" },
-  { icon: <IconSparkles />, title: "AI-assisted design", text: "Faster, smarter workflow" },
+  { icon: <IconPalette />, title: "Dashboards", text: "Admin panels & data views" },
+  { icon: <IconSparkles />, title: "AI-assisted design", text: "Faster ideas, my decisions" },
   { icon: <IconLotus />, title: "Design systems", text: "Consistent & scalable UI" },
 ];
 
@@ -45,8 +45,8 @@ export default function Home() {
               <span className="block">makes sense.</span>
             </h1>
             <p className="mt-3 text-lead">
-              I design interfaces for websites and web products, including dashboards and admin panels for B2B SaaS,
-              and use AI throughout my design process.
+              I design interfaces for websites and web products, including admin panels and dashboards. AI helps me
+              explore options faster; the decisions and the final design are mine.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-6">
               <Button href="#works" size="lg" arrow>
