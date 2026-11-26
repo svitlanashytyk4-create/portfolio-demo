@@ -1,12 +1,26 @@
-import { useId, type ChangeEventHandler } from "react";
+import { useId, type ChangeEventHandler, type HTMLInputAutoCompleteAttribute } from "react";
 
 export interface FormFieldProps {
   /** Підпис поля. Завжди стоїть над полем. */
   label: string;
   /** Ім'я поля у формі. */
   name?: string;
-  /** Тип текстового поля. */
+  /**
+   * Власний id поля. Потрібен, щоб послатися на поле ззовні, наприклад зі
+   * зведення помилок над формою (`href="#message"`). Без нього id генерується.
+   */
+  id?: string;
+  /** Тип текстового поля. Не діє, коли увімкнено `multiline`. */
   type?: "text" | "email" | "tel" | "url";
+  /** Багаторядкове поле (textarea) для довгого тексту, наприклад повідомлення. */
+  multiline?: boolean;
+  /** Висота багаторядкового поля в рядках. Діє лише з `multiline`. */
+  rows?: number;
+  /**
+   * Підказка браузеру для автозаповнення: `name`, `email`, `tel`, `off` тощо.
+   * Допомагає людям із моторними й когнітивними труднощами (WCAG 1.3.5).
+   */
+  autoComplete?: HTMLInputAutoCompleteAttribute;
   /** Підказка всередині порожнього поля. Не замінює підпис. */
   placeholder?: string;
   /** Початкове значення. Якщо задане, поле показується заповненим. */
@@ -19,9 +33,17 @@ export interface FormFieldProps {
   required?: boolean;
   /** Вимкнене поле: не редагується і не потрапляє у фокус. */
   disabled?: boolean;
+  /**
+   * Мова сторінки, на якій стоїть поле. Від неї залежить прихований для очей
+   * префікс перед текстом помилки: `en` — «Error:», `uk` — «Помилка:».
+   */
+  lang?: "en" | "uk";
   /** Обробник зміни значення. */
-  onChange?: ChangeEventHandler<HTMLInputElement>;
+  onChange?: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 }
+
+/** Префікс, який скрінрідер зачитує перед текстом помилки. */
+const errorPrefix = { en: "Error:", uk: "Помилка:" } as const;
 
 function ErrorIcon() {
   return (
@@ -44,25 +66,45 @@ const inputState = {
 };
 
 /**
- * Текстове поле з підписом над ним. Стани: звичайний, наведення, фокус,
- * заповнене, помилка (межа, іконка й текст `danger`) і вимкнене.
+ * Текстове поле з підписом над ним: однорядкове або багаторядкове (`multiline`).
+ * Стани: звичайний, наведення, фокус, заповнене, помилка (межа, іконка й текст
+ * `danger`) і вимкнене.
  */
 export function FormField({
   label,
   name,
+  id: idProp,
   type = "text",
+  multiline = false,
+  rows = 5,
+  autoComplete,
   placeholder,
   defaultValue,
   error = false,
   errorMessage,
   required = false,
   disabled = false,
+  lang = "en",
   onChange,
 }: FormFieldProps) {
-  const id = useId();
+  const generatedId = useId();
+  const id = idProp ?? generatedId;
   const errorId = `${id}-error`;
   const showError = error && !disabled;
   const state = disabled ? "disabled" : showError ? "error" : "default";
+
+  const shared = {
+    id,
+    name,
+    autoComplete,
+    placeholder,
+    defaultValue,
+    required,
+    disabled,
+    onChange,
+    "aria-invalid": showError || undefined,
+    "aria-describedby": showError && errorMessage ? errorId : undefined,
+  };
 
   return (
     <div className="flex w-full flex-col gap-2">
@@ -75,23 +117,18 @@ export function FormField({
           </span>
         )}
       </label>
-      <input
-        id={id}
-        name={name}
-        type={type}
-        placeholder={placeholder}
-        defaultValue={defaultValue}
-        required={required}
-        disabled={disabled}
-        onChange={onChange}
-        aria-invalid={showError || undefined}
-        aria-describedby={showError && errorMessage ? errorId : undefined}
-        className={`${inputBase} ${inputState[state]}`}
-      />
+      {multiline ? (
+        <textarea {...shared} rows={rows} className={`${inputBase} ${inputState[state]} resize-y`} />
+      ) : (
+        <input {...shared} type={type} className={`${inputBase} ${inputState[state]}`} />
+      )}
       {showError && errorMessage && (
         <p id={errorId} className="flex items-center gap-2 text-caption text-danger">
           <ErrorIcon />
-          {errorMessage}
+          <span>
+            <span className="sr-only">{errorPrefix[lang]} </span>
+            {errorMessage}
+          </span>
         </p>
       )}
     </div>

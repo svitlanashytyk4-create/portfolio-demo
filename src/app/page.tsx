@@ -5,12 +5,18 @@ import { Button } from "@/components/Button/Button";
 import { Navigation } from "@/components/Navigation/Navigation";
 import {
   Branch,
+  IconCalendar,
+  IconClock,
   IconComputer,
   IconFolder,
   IconLayers,
   IconLotus,
+  IconMessage,
+  IconPackage,
   IconPalette,
+  IconPencil,
   IconSparkles,
+  IconTarget,
   Rule,
   Star,
 } from "./_home/decor";
@@ -20,6 +26,20 @@ const services = [
   { icon: <IconPalette />, title: "Dashboards", text: "Admin panels & data views" },
   { icon: <IconSparkles />, title: "AI-assisted design", text: "Faster ideas, my decisions" },
   { icon: <IconLotus />, title: "Design systems", text: "Consistent & scalable UI" },
+];
+
+/* TODO: замінити [TBD] на реальні строки (питання 24 у docs/site-plan.md) перед публікацією. */
+const processSteps = [
+  { icon: <IconMessage />, title: "Message", text: "You tell me about the task. I reply within [TBD]." },
+  { icon: <IconTarget />, title: "Brief", text: "Goals, users, scope. I estimate the hours and timeline." },
+  { icon: <IconPencil />, title: "Design", text: "Structure, visuals, layouts. Review rounds with you.", highlight: true },
+  { icon: <IconPackage />, title: "Handoff", text: "Figma files with components and states, ready for developers." },
+];
+
+const terms = [
+  { icon: <IconClock />, title: "Hourly", text: "Rate after we discuss the task" },
+  { icon: <IconLayers />, title: "Up to 2 projects", text: "So yours gets real focus" },
+  { icon: <IconCalendar />, title: "Timelines", text: "Screen [TBD] · project [TBD] · reply [TBD]" },
 ];
 
 export default function Home() {
@@ -86,7 +106,6 @@ export default function Home() {
 
         {/* ---------- Послуги ---------- */}
         <section
-          id="services"
           aria-label="What I do"
           className="grid gap-8 bg-sage p-8 md:grid-cols-2 lg:flex lg:items-start lg:justify-between"
         >
@@ -172,6 +191,87 @@ export default function Home() {
               </div>
             ))}
           </dl>
+        </section>
+
+        {/* ---------- Послуги й процес ---------- */}
+        <section id="services" aria-labelledby="services-title" className="mt-section pt-8">
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <div className="flex flex-col">
+              <p className="font-script text-script-sm text-accent-ink md:text-script">How I work</p>
+              <div className="flex items-center gap-2">
+                <Rule width={81} strokeWidth={2} />
+                <Star />
+                <span className="ml-4 text-caption uppercase">Services and process</span>
+              </div>
+              <h2 id="services-title" className="mt-4 text-display-sm">
+                From first message to ready <span className="text-accent-ink">layouts</span>
+              </h2>
+            </div>
+            <p className="text-body text-ink-muted md:max-w-xs">
+              Clear steps, no surprises: you always know what happens next.
+            </p>
+          </div>
+
+          <div className="relative mt-8">
+            {/* Пунктир, що з'єднує кроки: вертикальний на вузькому екрані, горизонтальний на широкому. */}
+            <span aria-hidden="true" className="absolute inset-y-0 left-1/2 border-l border-dashed border-accent lg:hidden" />
+            <span aria-hidden="true" className="absolute inset-x-[12%] top-12 hidden border-t border-dashed border-accent lg:block" />
+            <ol className="relative grid gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-4">
+              {processSteps.map((step, index) => (
+                <li
+                  key={step.title}
+                  className={`flex flex-col items-center rounded-t-arch border px-4 pb-6 pt-8 text-center ${
+                    step.highlight ? "border-sage bg-sage text-canvas" : "border-line bg-surface"
+                  }`}
+                >
+                  <span
+                    className={`grid size-12 place-items-center rounded-full ${
+                      step.highlight ? "bg-canvas text-sage" : "border border-accent bg-canvas text-accent-ink"
+                    }`}
+                  >
+                    {step.icon}
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className={`mt-3 text-display-sm lining-nums ${step.highlight ? "" : "text-accent-ink"}`}
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="text-heading">{step.title}</h3>
+                  <p className={`mt-2 text-body ${step.highlight ? "text-surface" : "text-ink-muted"}`}>{step.text}</p>
+                  {step.highlight && (
+                    <p className="mt-4 inline-flex items-center gap-2 border border-line px-3 py-1 text-caption text-surface">
+                      <span className="size-4 [&>svg]:size-4">
+                        <IconSparkles />
+                      </span>
+                      AI: faster variants
+                    </p>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          <dl className="mt-8 grid border-y border-line md:grid-cols-3">
+            {terms.map((term, index) => (
+              <div
+                key={term.title}
+                className={`flex items-start gap-3 p-4 ${index > 0 ? "border-t border-line md:border-t-0 md:border-l" : ""}`}
+              >
+                <span className="text-accent">{term.icon}</span>
+                <div>
+                  <dt className="text-heading">{term.title}</dt>
+                  <dd className="text-body text-ink-muted">{term.text}</dd>
+                </div>
+              </div>
+            ))}
+          </dl>
+
+          <div className="mt-8 flex justify-center">
+            <Button href="#contacts" size="lg" arrow>
+              Discuss your project
+            </Button>
+          </div>
         </section>
       </main>
     </div>

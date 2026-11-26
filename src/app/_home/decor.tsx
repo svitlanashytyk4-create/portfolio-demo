@@ -128,3 +128,60 @@ export function IconLayers() {
     </FactIcon>
   );
 }
+
+/* ---------- Розділ «Послуги й процес» ---------- */
+
+export function IconMessage() {
+  return (
+    <FactIcon>
+      <path d="M4 6h24v16H13l-6 5v-5H4z" />
+      <path d="M10 12h12M10 16h8" />
+    </FactIcon>
+  );
+}
+
+export function IconTarget() {
+  return (
+    <FactIcon>
+      <circle cx="16" cy="16" r="12" />
+      <circle cx="16" cy="16" r="7" />
+      <circle cx="16" cy="16" r="2" />
+    </FactIcon>
+  );
+}
+
+export function IconPencil() {
+  return (
+    <FactIcon>
+      <path d="M21 5l6 6L12 26H6v-6z" />
+      <path d="M18 8l6 6" />
+    </FactIcon>
+  );
+}
+
+export function IconPackage() {
+  return (
+    <FactIcon>
+      <path d="M16 3l12 6v14l-12 6-12-6V9z" />
+      <path d="M4 9l12 6 12-6M16 15v14" />
+    </FactIcon>
+  );
+}
+
+export function IconClock() {
+  return (
+    <FactIcon>
+      <circle cx="16" cy="16" r="12" />
+      <path d="M16 9v7l5 3" />
+    </FactIcon>
+  );
+}
+
+export function IconCalendar() {
+  return (
+    <FactIcon>
+      <rect x="4" y="6" width="24" height="22" />
+      <path d="M4 12h24M10 3v6M22 3v6" />
+    </FactIcon>
+  );
+}
